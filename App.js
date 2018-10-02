@@ -2,15 +2,33 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider, connect } from 'react-redux';
+import { createStackNavigator } from 'react-navigation';
 import axios from 'axios';
 import axiosMiddleware from 'redux-axios-middleware';
 import reducer from './js/reducer';
-import RepoList from './js/component/RepoList'
+import RepoList from './js/component/RepoList';
+import SimpleExample from './js/component/SimpleExample';
+import AntExample from './js/component/AntExample';
+import Home from './js/container/Home';
+import Content from './js/container/Content';
 
+const Stack = createStackNavigator(
+  {
+    Home: {
+      screen: Home,
+    },
+    Content: {
+      screen: Content,
+    },
+  },
+  {
+    initialRouteName: 'Home'
+  }
+);
 
 const client = axios.create({
   baseURL: 'https://api.github.com',
-  responseType: 'json'
+  responseType: 'json',
 });
 
 const store = createStore(reducer, applyMiddleware(axiosMiddleware(client)));
@@ -18,9 +36,9 @@ const store = createStore(reducer, applyMiddleware(axiosMiddleware(client)));
 export default class App extends React.Component {
   render() {
     return (
-      <Provider store={store}>
-        <View style={styles.container}>
-          <RepoList />
+      <Provider store={ store }>
+        <View style={ styles.container }>
+          <Stack/>
         </View>
       </Provider>
     );

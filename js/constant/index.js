@@ -1,3 +1,10 @@
 export const GET_REPOS = 'base/repos/LOAD';
 export const GET_REPOS_SUCCESS = 'base/repos/LOAD_SUCCESS';
 export const GET_REPOS_FAIL = 'base/repos/LOAD_FAIL';
+
+export const LOAD_TARGET_READING_SIDE = 'reading/LOAD_TARGET_READING_SIDE';
+export const LOAD_TARGET_READING_SIDE_SUCCESS = 'reading/LOAD_TARGET_READING_SIDE_SUCCESS';
+export const LOAD_TARGET_READING_SIDE_FAIL = 'reading/LOAD_TARGET_READING_SIDE_FAIL';
+
+export const UPDATE_READING_TITLES = 'reading/UPDATE_READING_TITLES';
+export const UPDATE_READING_CONTENT = 'reading/UPDATE_READING_CONTENT';
