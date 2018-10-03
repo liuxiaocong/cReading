@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: width,
-    backgroundColor: '#FF0',
+    backgroundColor: '#FFF',
   },
   titleItem: {
     display: 'flex',
@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingTop: 0,
     paddingBottom: 15,
+    backgroundColor: '#FFF',
     flex: 1,
   },
   titleTitle: {
@@ -54,7 +55,11 @@ const styles = StyleSheet.create({
   titleItemWrap: {},
 });
 
-class Home extends Component {
+class TitleList extends Component {
+
+  static navigationOptions = {
+    header: null,
+  };
 
   constructor(props) {
     super(props);
@@ -76,6 +81,8 @@ class Home extends Component {
         style={ styles.titleItemWrap }
         onPress={ () => {
           console.log('on press');
+          console.log()
+          this.props.navigation.navigate('Content', { url: item.link, title: item.title, globalKey: this.state.globalKey, key: this.state.key })
         } }
       >
         <View style={ styles.titleItem }>
@@ -99,7 +106,7 @@ class Home extends Component {
   render() {
     const { reading } = this.props;
     const { globalKey, key } = this.state;
-    console.log(reading);
+    //console.log(reading);
     let data = [];
     if (reading[globalKey]) {
       let targetData = _.find(reading[globalKey], { 'key': key });
@@ -108,7 +115,7 @@ class Home extends Component {
       }
     }
     return (
-      <View styles={ styles.container }>
+      <View style={ styles.container }>
         <FlatList
           data={ data }
           renderItem={ this.renderItem }
@@ -130,4 +137,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   loadTargetReadingSide,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(TitleList);

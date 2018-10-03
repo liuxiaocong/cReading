@@ -9,20 +9,21 @@ import reducer from './js/reducer';
 import RepoList from './js/component/RepoList';
 import SimpleExample from './js/component/SimpleExample';
 import AntExample from './js/component/AntExample';
-import Home from './js/container/Home';
+import AntIconExample from './js/component/AntIconExample';
+import TitleList from './js/container/TitleList';
 import Content from './js/container/Content';
 
 const Stack = createStackNavigator(
   {
-    Home: {
-      screen: Home,
-    },
     Content: {
       screen: Content,
     },
+    TitleList: {
+      screen: TitleList,
+    },
   },
   {
-    initialRouteName: 'Home'
+    initialRouteName: 'TitleList',
   }
 );
 
@@ -49,7 +50,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: 40,
   },
 });
+
+//alignItems: 'center',
+//justifyContent: 'center',
+//make page disappear
