@@ -56,5 +56,55 @@ export default {
         ],
       },
     },
+
+    {
+      key: 'photoworld',
+      name: '摄影世界',
+      url: 'http://www.photoworld.com.cn/tag/%E6%91%84%E5%BD%B1%E6%8A%80%E5%B7%A7',
+      nav: {
+        selector: [
+          {
+            type: 0,
+            value: '#home-main article',
+          }],
+        titleSelector: [
+          {
+            type: 1,
+            value: 'h3',
+          }],
+        urlSelector: [
+          {
+            type: 0,
+            value: '.thumbnail a',
+          },
+          {
+            type: 2,
+            value: 'href',
+          }],
+        desSelector: [
+          {
+            type: 1,
+            value: '.excerpt',
+          }],
+        imgSelector: [
+          {
+            type: 0,
+            value: '.thumbnail img',
+          },
+          {
+            type: 2,
+            value: 'src',
+          }],
+        contentUrlSelector: '',
+      },
+      content: {
+        selector: [
+          {
+            type: 3,
+            value: '.single-content',
+          },
+        ],
+      },
+    }
   ],
 };

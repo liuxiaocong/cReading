@@ -22,9 +22,9 @@ export function getTargetReadingSide(globalKey, data, dispatch) {
     let titles = [];
     for (let i = 0; i < titleList.length; i++) {
       let obj = {};
-      obj.title = getValueFromItemSelectors( titleList.eq(i), titleSelector);
+      obj.title = getValueFromItemSelectors( titleList.eq(i), titleSelector).trim();
       obj.link = getValueFromItemSelectors( titleList.eq(i), urlSelector);
-      obj.des = getValueFromItemSelectors( titleList.eq(i), desSelector);
+      obj.des = getValueFromItemSelectors( titleList.eq(i), desSelector).trim();
       obj.image = getValueFromItemSelectors( titleList.eq(i), imgSelector);
       titles.push(obj);
     }

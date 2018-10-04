@@ -63,16 +63,17 @@ class TitleList extends Component {
 
   constructor(props) {
     super(props);
+    const targetData = data.list[1];
     this.state = {
-      globalKey: 'photo',
-      key: 'foto',
+      globalKey: data.globalKey,
+      key: targetData.key,
+      targetData,
     };
   }
 
   componentDidMount() {
-    this.props.loadTargetReadingSide(
-      'http://academy.fengniao.com/list_967.html');
-    getTargetReadingSide(data.globalKey, data.list[0], this.props.dispatch);
+    const { targetData } = this.state;
+    getTargetReadingSide(data.globalKey, targetData, this.props.dispatch);
   }
 
   renderItem = ({ item, index }) => {

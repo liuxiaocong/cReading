@@ -28,7 +28,10 @@ const styles = StyleSheet.create({
     width: width,
     height: 300,
   },
-  contentContainer: {},
+  contentContainer: {
+    marginLeft: 5,
+    marginRight: 5,
+  },
   header: {
     display: 'flex',
     flexDirection: 'row',
@@ -69,6 +72,8 @@ const webViewStyles = StyleSheet.create({
   },
   p: {
     fontSize: 14,
+    margin:0,
+    lineHeight: 18
   },
 });
 
