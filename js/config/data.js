@@ -1,4 +1,4 @@
-// type -  0 : normal ， 1：text,  2: attr
+// type -  0 : normal ， 1：text,  2: attr, 3: html
 export default {
   globalKey: 'photo',
   name: '摄影',
@@ -48,7 +48,12 @@ export default {
         contentUrlSelector: '',
       },
       content: {
-        selector: '',
+        selector: [
+          {
+            type: 3,
+            value: '.entry',
+          },
+        ],
       },
     },
   ],

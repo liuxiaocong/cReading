@@ -30,7 +30,7 @@ export function getTargetReadingSide(globalKey, data, dispatch) {
     }
     dispatch(updateReadingTitles(globalKey, data.key, titles));
     for (let i = 0; i < titles.length; i++) {
-      getTargetContent(i, globalKey, data.key, titles[i], dispatch);
+      getTargetContent(i, globalKey, data.key, titles[i], dispatch, data);
     }
   }).
   catch((error) => {
@@ -47,8 +47,10 @@ export function getValueFromSelectors($, selectors) {
         ret = $(selectors[i].value);
       } else if (selectors[i].type === 1){
         ret = $(selectors[i].value).text();
-      } else if (selectors[i].type === 2){
-
+      } else if (selectors[i].type === 2) {
+        ret = ret.attr(selectors[i].value);
+      } else if (selectors[i].type === 3) {
+        ret = $(selectors[i].value).html();
       }
     } else {
       if (selectors[i].type === 0){
@@ -57,7 +59,9 @@ export function getValueFromSelectors($, selectors) {
       } else if (selectors[i].type === 1){
         ret = ret.find(selectors[i].value).text();
       } else if (selectors[i].type === 2){
-
+        ret = ret.attr(selectors[i].value);
+      } else if (selectors[i].type === 3) {
+        ret = ret.find(selectors[i].value).html();
       }
     }
   }
@@ -73,12 +77,14 @@ export function getValueFromItemSelectors(item, selectors) {
       item = item.find(selectors[i].value).text();
     } else if (selectors[i].type === 2) {
       item = item.attr(selectors[i].value);
+    } else if (selectors[i].type === 3) {
+      item = item.find(selectors[i].value).html();
     }
   }
   return item;
 }
 
-export function getTargetContent(index, globalKey, key, obj, dispatch) {
+export function getTargetContent(index, globalKey, key, obj, dispatch, data) {
   fetch(obj.link).
   then((response) => {
     return response.text();
@@ -86,7 +92,8 @@ export function getTargetContent(index, globalKey, key, obj, dispatch) {
   then((text) => {
     //let $ = cio.load(text);
     const $ = cheerio.load(text);
-    let content = $('.entry').html();
+    const { selector } = data.content;
+    let content = getValueFromSelectors($, selector);
     dispatch(updateReadingContent(index, globalKey, key, obj.link, content));
   }).
   catch((error) => {
