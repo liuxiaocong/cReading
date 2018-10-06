@@ -28,8 +28,8 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     padding: 10,
-    paddingTop: 0,
-    paddingBottom: 15,
+    paddingTop: 8,
+    paddingBottom: 8,
     backgroundColor: '#FFF',
     flex: 1,
   },
@@ -63,11 +63,14 @@ class TitleList extends Component {
 
   constructor(props) {
     super(props);
-    const targetData = data.list[1];
+    console.log(props.tIndex);
+    console.log('TitleList');
+    const targetData = data.list[props.tIndex];
     this.state = {
       globalKey: data.globalKey,
       key: targetData.key,
       targetData,
+      tIndex: props.tIndex ? 0 : parseInt(props.tIndex),
     };
   }
 
@@ -82,8 +85,13 @@ class TitleList extends Component {
         style={ styles.titleItemWrap }
         onPress={ () => {
           console.log('on press');
-          console.log()
-          this.props.navigation.navigate('Content', { url: item.link, title: item.title, globalKey: this.state.globalKey, key: this.state.key })
+          console.log();
+          this.props.navigation.navigate('Content', {
+            url: item.link,
+            title: item.title,
+            globalKey: this.state.globalKey,
+            key: this.state.key,
+          });
         } }
       >
         <View style={ styles.titleItem }>

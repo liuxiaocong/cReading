@@ -11,6 +11,7 @@ import SimpleExample from './js/component/SimpleExample';
 import AntExample from './js/component/AntExample';
 import AntIconExample from './js/component/AntIconExample';
 import TitleList from './js/container/TitleList';
+import Home from './js/container/Home';
 import Content from './js/container/Content';
 
 const Stack = createStackNavigator(
@@ -18,12 +19,12 @@ const Stack = createStackNavigator(
     Content: {
       screen: Content,
     },
-    TitleList: {
-      screen: TitleList,
-    },
+    Home: {
+      screen: Home,
+    }
   },
   {
-    initialRouteName: 'TitleList',
+    initialRouteName: 'Home',
   }
 );
 

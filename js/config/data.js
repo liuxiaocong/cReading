@@ -5,7 +5,7 @@ export default {
   list: [
     {
       key: 'foto',
-      name: 'FOTO',
+      title: 'FOTO',
       url: 'https://www.fotobeginner.com/category/skills/',
       nav: {
         selector: [
@@ -59,7 +59,7 @@ export default {
 
     {
       key: 'photoworld',
-      name: '摄影世界',
+      title: '摄影世界',
       url: 'http://www.photoworld.com.cn/tag/%E6%91%84%E5%BD%B1%E6%8A%80%E5%B7%A7',
       nav: {
         selector: [
